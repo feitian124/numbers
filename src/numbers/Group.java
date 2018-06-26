@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
-	
-	private int max=0;
-	
-	private int min=Integer.MAX_VALUE;
-	
+
+	private int max = 0;
+
+	private int min = Integer.MAX_VALUE;
+
+	private int total = 0;
+
 	private List<Integer> list;
-	
+
 	public Group(int size) {
 		list = new ArrayList<>(size);
 	}
@@ -38,26 +40,29 @@ public class Group {
 	public void setList(List<Integer> list) {
 		this.list = list;
 	}
-	
+
 	public void add(int e) {
-		
-		if(e > max) {
+
+		if (e > max) {
 			max = e;
 		}
-		
-		if(e < min) {
+
+		if (e < min) {
 			min = e;
 		}
-		
+
+		total += e;
+
 		list.add(e);
 	}
-	
+
 	public int size() {
 		return list.size();
 	}
-	
+
 	public String toString() {
-		return String.format("max: %d, min: %d, quantity: %s, numbers: %s", max, min, list.size(), list);
+		return String.format("max: %6d, min: %5d, quantity: %3s, total: %7d, avg: %8d", max, min, list.size(), total,
+				total / list.size());
 	}
 
 }
